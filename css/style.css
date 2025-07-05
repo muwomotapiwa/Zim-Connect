@@ -1,0 +1,49 @@
+/* Custom styles for the Inter font and general body styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f2f5; /* Light gray fallback background */
+    color: #333;
+    /* Zimbabwean Flag as Background */
+    background-image: url('https://af6815798a.imgdist.com/pub/bfra/knkjywkm/o5a/c9k/02e/zimbabwe-waving-flag-realistic-transparent-background-free-png.webp');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Keep the background fixed during scroll */
+}
+/* Hide sections by default, JavaScript will manage visibility */
+.page-section {
+    display: none;
+}
+.page-section.active {
+    display: block;
+}
+/* Make content sections semi-transparent */
+.page-section {
+    background-color: rgba(255, 255, 255, 0.85); /* White with 85% opacity */
+    backdrop-filter: blur(2px); /* Optional: adds a subtle blur to the background behind the section */
+}
+/* Custom scrollbar for better aesthetics using Zimbabwean flag green */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #e2e8f0; /* Tailwind's gray-200 */
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #10B981; /* Emerald-500 (Green from flag) */
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #059669; /* Emerald-600 (Darker green) */
+}
+/* Styles for hamburger menu */
+.mobile-nav-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.mobile-nav-menu.active {
+    max-height: 1000px; /* Adjusted to allow all menu items to be visible */
+    transition: max-height 0.5s ease-in;
+}

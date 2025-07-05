@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zim Connect</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header/Navigation Bar -->
+    <header class="bg-emerald-700 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between">
+            <h1 class="text-3xl font-bold flex items-center">
+                <img src="https://af6815798a.imgdist.com/pub/bfra/knkjywkm/o5a/c9k/02e/zimbabwe-waving-flag-realistic-transparent-background-free-png.webp" alt="Zimbabwe Flag Logo" class="inline-block h-8 w-8 mr-2 rounded-full object-cover">
+                Zim Connect
+            </h1>
+            <!-- Hamburger menu button for small screens -->
+            <button id="hamburger-menu" class="lg:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block">
+                <ul class="flex space-x-4 md:space-x-4">
+                    <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="home">Home</a></li>
+                    <!-- Grouped Jobs Links -->
+                    <li class="relative group">
+                        <a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="find-jobs">Jobs <i class="fas fa-caret-down ml-1"></i></a>
+                        <ul class="absolute hidden group-hover:block bg-emerald-800 text-white rounded-md shadow-lg py-2 z-10 min-w-[120px]">
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="find-jobs">Find Jobs</a></li>
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="post-job">Post Job</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="advertise-with-us">Advertise</a></li>
+                    <!-- Grouped Learn & Grow / Entrepreneurship -->
+                    <li class="relative group">
+                        <a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="learn-grow">Growth & Entrepreneurship <i class="fas fa-caret-down ml-1"></i></a>
+                        <ul class="absolute hidden group-hover:block bg-emerald-800 text-white rounded-md shadow-lg py-2 z-10 min-w-[180px]">
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="learn-grow">Learn & Grow</a></li>
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="entrepreneurship-hub">Entrepreneurship Hub</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="discover-zimbabwe">Discover Zim</a></li>
+                    <!-- Grouped Profile Links -->
+                    <li class="relative group">
+                        <a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="my-profile">Profile <i class="fas fa-caret-down ml-1"></i></a>
+                        <ul class="absolute hidden group-hover:block bg-emerald-800 text-white rounded-md shadow-lg py-2 z-10 min-w-[120px]">
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="my-profile">My Profile</a></li>
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="enhanced-profiles">Enhanced Profiles</a></li>
+                        </ul>
+                    </li>
+                    <!-- Grouped Engagement Hub Links -->
+                    <li class="relative group">
+                        <a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="interactive-learning">Engagement Hub <i class="fas fa-caret-down ml-1"></i></a>
+                        <ul class="absolute hidden group-hover:block bg-emerald-800 text-white rounded-md shadow-lg py-2 z-10 min-w-[160px]">
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="interactive-learning">Learning Hub</a></li>
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="community-networking">Community</a></li>
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="entrepreneurship-deep-dive">Hub Deep Dive</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="data-analytics">Data & Analytics</a></li>
+                    <!-- Grouped Login Links - Moved to far right -->
+                    <li class="relative group ml-auto"> <!-- ml-auto pushes this group to the right -->
+                        <a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300" data-target="sign-in">Login <i class="fas fa-caret-down ml-1"></i></a>
+                        <ul class="absolute hidden group-hover:block bg-emerald-800 text-white rounded-md shadow-lg py-2 z-10 min-w-[100px] right-0">
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="sign-in">Sign In</a></li>
+                            <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="sign-up">Sign Up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Mobile Navigation (hidden by default, toggled by JS) -->
+        <nav id="mobile-nav" class="mobile-nav-menu lg:hidden mt-4">
+            <ul class="flex flex-col items-center space-y-3">
+                <li><a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="home">Home</a></li>
+                <!-- Grouped Mobile Jobs Links -->
+                <li>
+                    <a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="find-jobs">Jobs</a>
+                    <ul class="ml-4 mt-1 space-y-2">
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="find-jobs">Find Jobs</a></li>
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="post-job">Post Job</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="advertise-with-us">Advertise</a></li>
+                <!-- Grouped Mobile Growth & Entrepreneurship -->
+                <li>
+                    <a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="learn-grow">Growth & Entrepreneurship</a>
+                    <ul class="ml-4 mt-1 space-y-2">
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="learn-grow">Learn & Grow</a></li>
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="entrepreneurship-hub">Entrepreneurship Hub</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="discover-zimbabwe">Discover Zim</a></li>
+                <!-- Grouped Mobile Profile Links -->
+                <li>
+                    <a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="my-profile">Profile</a>
+                    <ul class="ml-4 mt-1 space-y-2">
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="my-profile">My Profile</a></li>
+                        <li><a href="#" class="nav-link block px-4 py-2 text-sm hover:bg-emerald-700" data-target="enhanced-profiles">Enhanced Profiles</a></li>
+                    </ul>
+                </li>
+                <!-- Grouped Mobile Engagement Hub Links -->
+                <li>
+                    <a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="interactive-learning">Engagement Hub</a>
+                    <ul class="ml-4 mt-1 space-y-2">
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="interactive-learning">Learning Hub</a></li>
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="community-networking">Community</a></li>
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="entrepreneurship-deep-dive">Hub Deep Dive</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="data-analytics">Data & Analytics</a></li>
+                <!-- Grouped Mobile Login Links -->
+                <li>
+                    <a href="#" class="nav-link text-lg hover:text-amber-300 transition duration-300 py-2" data-target="sign-in">Login</a>
+                    <ul class="ml-4 mt-1 space-y-2">
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="sign-in">Sign In</a></li>
+                        <li><a href="#" class="nav-link text-base hover:text-amber-300 transition duration-300 py-1" data-target="sign-up">Sign Up</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-4 md:p-8">
+        <!-- Home Section -->
+        <section id="home" class="page-section active p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-4">Welcome to Zim Connect!</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Your one-stop platform dedicated to empowering Zimbabwean youth by connecting them with job opportunities,
+                essential skills training, and resources to kickstart their entrepreneurial journeys.
+                We aim to bridge the gap between talent and opportunity, fostering a brighter future for all.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1: Find Jobs - Green Theme -->
+                <div class="bg-emerald-100 p-5 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                    <i class="fas fa-search text-emerald-600 text-3xl mb-3"></i>
+                    <h3 class="font-bold text-xl text-emerald-800 mb-2">Find Your Dream Job</h3>
+                    <p class="text-gray-700">Explore a wide range of job opportunities tailored for young professionals and job seekers.</p>
+                    <button class="mt-4 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition duration-300 nav-link" data-target="find-jobs">Browse Jobs</button>
+                </div>
+                <!-- Card 2: Ignite Business - Yellow/Gold Theme -->
+                <div class="bg-amber-100 p-5 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                    <i class="fas fa-lightbulb text-amber-600 text-3xl mb-3"></i>
+                    <h3 class="font-bold text-xl text-amber-800 mb-2">Ignite Your Business Idea</h3>
+                    <p class="text-gray-700">Access resources, mentorship, and funding information to launch and grow your venture.</p>
+                    <button class="mt-4 bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition duration-300 nav-link" data-target="entrepreneurship-hub">Start a Business</button>
+                </div>
+                <!-- Card 3: Upskill & Grow - Red Theme -->
+                <div class="bg-red-100 p-5 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                    <i class="fas fa-graduation-cap text-red-600 text-3xl mb-3"></i>
+                    <h3 class="font-bold text-xl text-red-800 mb-2">Upskill & Grow</h3>
+                    <p class="text-gray-700">Enhance your skills with our curated courses and digital literacy programs.</p>
+                    <button class="mt-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 nav-link" data-target="learn-grow">Learn More</button>
+                </div>
+            </div>
+
+            <!-- Latest News & Updates Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-emerald-700 mb-4">Latest News & Updates</h3>
+                <div id="news-updates-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- News articles will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <!-- Upcoming Events Section -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-emerald-700 mb-4">Upcoming Events</h3>
+                <div id="upcoming-events-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Events will be dynamically loaded here -->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Find Jobs Section -->
+        <section id="find-jobs" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Find Job Opportunities</h2>
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <input type="text" id="job-search-query" placeholder="Search by keyword (e.g., 'marketing', 'driver')"
+                       class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 shadow-sm">
+                <select id="job-filter-location" class="p-3 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 shadow-sm">
+                    <option value="">All Locations</option>
+                    <option value="Harare">Harare</option>
+                    <option value="Bulawayo">Bulawayo</option>
+                    <option value="Mutare">Mutare</option>
+                    <option value="Gweru">Gweru</option>
+                    <option value="Kwekwe">Kwekwe</option>
+                    <option value="Chitungwiza">Chitungwiza</option>
+                    <option value="Masvingo">Masvingo</option>
+                    <option value="Bindura">Bindura</option>
+                    <option value="Rusape">Rusape</option>
+                    <option value="Marondera">Marondera</option>
+                    <option value="Victoria Falls">Victoria Falls</option>
+                    <option value="Zvishavane">Zvishavane</option>
+                    <option value="Kadoma">Kadoma</option>
+                    <option value="Norton">Norton</option>
+                    <option value="Chinhoyi">Chinhoyi</option>
+                </select>
+                <select id="job-filter-type" class="p-3 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500 shadow-sm">
+                    <option value="">All Job Types</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Gig">Gig</option>
+                </select>
+                <button id="apply-job-filters" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md">Apply Filters</button>
+            </div>
+            <div id="job-listings" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Job cards will be dynamically loaded here -->
+            </div>
+            <!-- Dynamic Detail Modal (reused for jobs, attractions, sites) -->
+            <div id="detail-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center p-4 z-50" style="display: none;">
+                <div class="bg-white rounded-xl shadow-2xl p-8 max-w-2xl w-full relative">
+                    <button id="close-detail-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                    <h3 id="modal-title" class="text-2xl font-bold text-emerald-700 mb-3"></h3>
+                    <div id="modal-content" class="text-gray-700 leading-relaxed mb-4"></div>
+                    <button id="modal-action-button" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition duration-300 shadow-md w-full hidden">Apply Now</button>
+                    <p id="modal-message" class="text-center text-emerald-700 mt-4 font-semibold hidden"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post Job Section (Employer Panel) -->
+        <section id="post-job" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Post a New Job</h2>
+            <form id="post-job-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="employer-job-title" class="block text-gray-700 text-sm font-bold mb-2">Job Title:</label>
+                    <input type="text" id="employer-job-title" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+                <div>
+                    <label for="employer-company-name" class="block text-gray-700 text-sm font-bold mb-2">Company Name:</label>
+                    <input type="text" id="employer-company-name" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+                <div>
+                    <label for="employer-job-location" class="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+                    <select id="employer-job-location" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                        <option value="">Select Location</option>
+                        <option value="Harare">Harare</option>
+                        <option value="Bulawayo">Bulawayo</option>
+                        <option value="Mutare">Mutare</option>
+                        <option value="Gweru">Gweru</option>
+                        <option value="Kwekwe">Kwekwe</option>
+                        <option value="Chitungwiza">Chitungwiza</option>
+                        <option value="Masvingo">Masvingo</option>
+                        <option value="Bindura">Bindura</option>
+                        <option value="Rusape">Rusape</option>
+                        <option value="Marondera">Marondera</option>
+                        <option value="Victoria Falls">Victoria Falls</option>
+                        <option value="Zvishavane">Zvishavane</option>
+                        <option value="Kadoma">Kadoma</option>
+                        <option value="Norton">Norton</option>
+                        <option value="Chinhoyi">Chinhoyi</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="employer-job-type" class="block text-gray-700 text-sm font-bold mb-2">Job Type:</label>
+                    <select id="employer-job-type" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                        <option value="">Select Job Type</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Gig">Gig</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="employer-job-salary" class="block text-gray-700 text-sm font-bold mb-2">Salary Range (e.g., $500 - $800):</label>
+                    <input type="text" id="employer-job-salary" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm">
+                </div>
+                <div class="md:col-span-2">
+                    <label for="employer-job-description" class="block text-gray-700 text-sm font-bold mb-2">Job Description:</label>
+                    <textarea id="employer-job-description" rows="5" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="employer-job-requirements" class="block text-gray-700 text-sm font-bold mb-2">Requirements (comma-separated):</label>
+                    <textarea id="employer-job-requirements" rows="3" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required></textarea>
+                </div>
+                <div>
+                    <label for="employer-date-posted" class="block text-gray-700 text-sm font-bold mb-2">Date Posted:</label>
+                    <input type="date" id="employer-date-posted" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" readonly>
+                </div>
+                <div>
+                    <label for="employer-expiration-date" class="block text-gray-700 text-sm font-bold mb-2">Expiration Date:</label>
+                    <input type="date" id="employer-expiration-date" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm">
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition duration-300 shadow-md w-full">Post Job</button>
+                </div>
+            </form>
+
+            <h3 class="text-2xl font-semibold text-emerald-700 mt-10 mb-4">My Posted Jobs</h3>
+            <div id="my-posted-jobs" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Posted jobs will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Advertise with Us Section -->
+        <section id="advertise-with-us" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Advertise Your Business & Products</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Reach a vibrant community of young professionals and aspiring entrepreneurs across Zimbabwe.
+                Advertise your business, products, or services on Zim Connect to connect with your target audience!
+            </p>
+
+            <button id="show-advertise-form-btn" class="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition duration-300 shadow-md mb-6">
+                Request to Advertise
+            </button>
+
+            <form id="advertise-request-form" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 bg-amber-50 p-6 rounded-lg shadow-inner mb-8">
+                <h3 class="md:col-span-2 text-2xl font-semibold text-amber-700 mb-4">Advertisement Request Form</h3>
+                <div>
+                    <label for="advertiser-name" class="block text-gray-700 text-sm font-bold mb-2">Your Name:</label>
+                    <input type="text" id="advertiser-name" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-amber-500 focus:border-amber-500 shadow-sm" required>
+                </div>
+                <div>
+                    <label for="advertiser-email" class="block text-gray-700 text-sm font-bold mb-2">Your Email:</label>
+                    <input type="email" id="advertiser-email" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-amber-500 focus:border-amber-500 shadow-sm" required>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="business-name" class="block text-gray-700 text-sm font-bold mb-2">Business/Product Name:</label>
+                    <input type="text" id="business-name" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-amber-500 focus:border-amber-500 shadow-sm" required>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="ad-content" class="block text-gray-700 text-sm font-bold mb-2">Advertisement Content/Description:</label>
+                    <textarea id="ad-content" rows="5" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-amber-500 focus:border-amber-500 shadow-sm" required></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition duration-300 shadow-md w-full">Submit Ad Request</button>
+                </div>
+                <p id="ad-request-message" class="md:col-span-2 text-center text-emerald-700 mt-4 font-semibold hidden">Your advertisement request has been submitted successfully! We will contact you soon.</p>
+            </form>
+
+            <h3 class="text-2xl font-semibold text-emerald-700 mt-10 mb-4">Featured Advertisements</h3>
+            <div id="advertisements-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Advertisements will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Learn & Grow Section -->
+        <section id="learn-grow" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Learn & Grow Your Skills</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Explore a variety of courses and resources designed to enhance your employability and personal development.
+            </p>
+            <div id="learn-grow-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Course cards will be dynamically loaded here with random colors -->
+            </div>
+        </section>
+
+        <!-- Entrepreneurship Hub Section -->
+        <section id="entrepreneurship-hub" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Entrepreneurship Hub</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                This hub provides resources, mentorship opportunities, and guidance for young aspiring entrepreneurs in Zimbabwe.
+                Turn your ideas into successful ventures!
+            </p>
+            <div id="entrepreneurship-cards" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Resource cards will be dynamically loaded here with random colors -->
+            </div>
+        </section>
+
+        <!-- Discover Zimbabwe Section -->
+        <section id="discover-zimbabwe" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Discover the Heart of Zimbabwe!</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Zimbabwe is a land of unparalleled beauty, rich history, and a resilient, welcoming people.
+                From majestic waterfalls to ancient ruins, and vibrant culture, there's so much to explore and celebrate!
+            </p>
+
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-red-700 mb-4">Zimbabwean Public Holidays</h3>
+                <ul id="public-holidays-list" class="list-disc list-inside text-gray-700 grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <!-- Public holidays will be dynamically loaded here -->
+                </ul>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-amber-700 mb-4">World Heritage Sites</h3>
+                <div id="heritage-sites-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- World Heritage Sites will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-emerald-700 mb-4">Popular Tourist Attractions</h3>
+                <div id="tourist-attractions-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Tourist Attractions will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-red-700 mb-4">Tertiary Institutions in Zimbabwe</h3>
+                <div id="tertiary-institutions-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Tertiary Institutions will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold text-amber-700 mb-4">The Beauty of Zimbabwe & Its People</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Zimbabwe boasts breathtaking natural wonders, including the awe-inspiring Victoria Falls, one of the Seven Natural Wonders of the World.
+                    Its diverse landscapes range from the granite hills of Matopos to the lush Eastern Highlands, offering incredible biodiversity and scenic vistas.
+                    The country is home to abundant wildlife, with national parks like Hwange providing unforgettable safari safari experiences.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    But beyond its natural splendor, the true treasure of Zimbabwe lies in its people. Known for their warmth, hospitality, and resilience,
+                    Zimbabweans embody a spirit of hope and perseverance. Their rich cultural heritage, expressed through vibrant music, dance, art, and storytelling,
+                    is a testament to a proud history and a dynamic present. The spirit of 'Ubuntu'—humanity towards others—is deeply ingrained, fostering strong community bonds and a welcoming atmosphere for all.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-semibold text-emerald-700 mb-4">Popular Holiday Resorts & Destinations</h3>
+                <div id="holiday-resorts-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-emerald-100 p-5 rounded-lg shadow-sm">
+                        <img src="assets/images/resort_victoria_falls.png" alt="Victoria Falls" class="rounded-lg mb-3 w-full h-32 object-cover">
+                        <h4 class="font-bold text-xl text-emerald-800 mb-2">Victoria Falls</h4>
+                        <p class="text-gray-700">The majestic "Smoke that Thunders," offering unparalleled natural beauty and adventure activities.</p>
+                    </div>
+                    <div class="bg-amber-100 p-5 rounded-lg shadow-sm">
+                        <img src="assets/images/resort_hwange.png" alt="Hwange National Park" class="rounded-lg mb-3 w-full h-32 object-cover">
+                        <h4 class="font-bold text-xl text-amber-800 mb-2">Hwange National Park</h4>
+                        <p class="text-gray-700">Zimbabwe's largest wildlife reserve, famous for its vast elephant herds and diverse safari experiences.</p>
+                    </div>
+                    <div class="bg-red-100 p-5 rounded-lg shadow-sm">
+                        <img src="assets/images/resort_great_zimbabwe.png" alt="Great Zimbabwe Ruins" class="rounded-lg mb-3 w-full h-32 object-cover">
+                        <h4 class="font-bold text-xl text-red-800 mb-2">Great Zimbabwe Ruins</h4>
+                        <p class="text-gray-700">A UNESCO World Heritage site, showcasing the impressive stone architecture of a powerful ancient kingdom.</p>
+                    </div>
+                    <div class="bg-gray-100 p-5 rounded-lg shadow-sm">
+                        <img src="assets/images/resort_eastern_highlands.png" alt="Eastern Highlands" class="rounded-lg mb-3 w-full h-32 object-cover">
+                        <h4 class="font-bold text-xl text-gray-900 mb-2">Eastern Highlands</h4>
+                        <p class="text-gray-700">A region of stunning mountains, forests, waterfalls, and tea plantations, perfect for hiking and relaxation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Profile Section -->
+        <section id="my-profile" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">My Profile</h2>
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                <div class="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden shadow-lg">
+                    <img src="assets/images/user_profile_placeholder.png" alt="User Profile Picture" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-grow text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">John Doe</h3>
+                    <p class="text-gray-600 mb-1">Email: john.doe@example.com</p>
+                    <p class="text-gray-600 mb-1">Location: Harare, Zimbabwe</p>
+                    <p class="text-600 mb-4">Skills: Digital Marketing, Graphic Design, Project Management</p>
+                    <button class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition duration-300">Edit Profile</button>
+                </div>
+            </div>
+            <div class="mt-8">
+                <h4 class="text-xl font-semibold text-gray-700 mb-3">My Applications</h4>
+                <div id="my-applications" class="bg-gray-50 p-4 rounded-lg shadow-inner">
+                    <p class="text-gray-600">No applications submitted yet.</p>
+                    <!-- Dynamically add submitted applications here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- World Heritage Site Details -->
+        <section id="whs1-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="whs2-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="whs3-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="whs4-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="whs5-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <!-- Tourist Attraction Details -->
+        <section id="ta1-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="ta2-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="ta3-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="ta4-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="ta5-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="ta6-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="ta7-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <section id="ta8-details" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <!-- Content will be dynamically populated by JavaScript -->
+            <button class="back-to-discover-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Discover Zimbabwe</button>
+        </section>
+
+        <!-- New Sections for Enhanced Features -->
+        <section id="enhanced-profiles" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Enhanced User Profiles & Portfolios</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                This section would allow users to build comprehensive profiles, including detailed skills, work experience, educational background, and certifications.
+                Users would also be able to upload digital portfolios (graphic design, writing samples, code snippets, photos of handcrafted goods) to showcase their work.
+                A recommendation and endorsement system would be implemented to build credibility for youth.
+            </p>
+            <p class="text-red-600 font-semibold">
+                **Note:** Full implementation of user profiles, portfolio uploads, and recommendation systems requires a robust backend database and user authentication, which are beyond the scope of a single HTML file. This is a conceptual placeholder.
+            </p>
+            <button class="back-to-home-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Home</button>
+        </section>
+
+        <section id="interactive-learning" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Interactive Learning & Skill Development</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Here, users would find curated learning paths for in-demand skills like "Digital Marketing Fundamentals" or "Introduction to E-commerce."
+                The platform would integrate with local vocational training centers and online course providers to offer access to relevant courses.
+                Regular webinars and workshops on topics suchs as interview skills, CV writing, financial literacy, and business registration would also be hosted.
+            </p>
+            <p class="text-red-600 font-semibold">
+                **Note:** Integration with external learning platforms, course tracking, and live webinar functionality requires backend development and API integrations, which are beyond the scope of a single HTML file. This is a conceptual placeholder.
+            </p>
+            <button class="back-to-home-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Home</button>
+        </section>
+
+        <section id="community-networking" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Community & Networking Features</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                This section would house forums and discussion boards for youth to connect, share experiences, and collaborate.
+                An advanced mentorship matching system would facilitate direct connections between aspiring youth and experienced professionals.
+                A calendar would feature local meetup and event listings, including career fairs and entrepreneurship expos across Zimbabwe.
+            </p>
+            <p class="text-red-600 font-semibold">
+                **Note:** Real-time forum interactions, complex mentorship matching algorithms, and dynamic event listings require significant backend development and database management, which are beyond the scope of a single HTML file. This is a conceptual placeholder.
+            </p>
+            <button class="back-to-home-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Home</button>
+        </section>
+
+        <section id="entrepreneurship-deep-dive" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Entrepreneurship Hub Deep Dive</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                This expanded hub would offer detailed legal and regulatory guidance for business registration and tax compliance in Zimbabwe.
+                It would provide comprehensive support for funding applications, including templates for grant applications, loan proposals, and pitch decks.
+                The section would also feature inspiring success stories of young Zimbabwean entrepreneurs, offering motivation and practical insights.
+            </p>
+            <p class="text-red-600 font-semibold">
+                **Note:** Dynamic content loading for legal guides, interactive funding application tools, and a comprehensive database of success stories require backend development, which are beyond the scope of a single HTML file. This is a conceptual placeholder.
+            </p>
+            <button class="back-to-home-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Home</button>
+        </section>
+
+        <section id="data-analytics" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Data & Analytics for Youth Empowerment</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                This section represents the backend and reporting capabilities of the platform. It would involve collecting anonymized data on job demand and youth skills to identify skill gaps and inform future training programs.
+                Impact reporting would track key metrics suchs as job placements, businesses launched, and skills acquired to demonstrate the platform's overall effectiveness and impact on youth empowerment.
+            </p>
+            <p class="text-red-600 font-semibold">
+                **Note:** This section primarily describes backend data collection and reporting functionalities, which are not directly visible to the end-user on the frontend. Implementing this requires database design, data processing, and reporting tools, which are beyond the scope of a single HTML file. This is a conceptual placeholder.
+            </p>
+            <button class="back-to-home-btn bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300 shadow-md mt-4">Back to Home</button>
+        </section>
+
+        <!-- Sign In Section -->
+        <section id="sign-in" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Sign In</h2>
+            <form class="grid grid-cols-1 gap-6 max-w-md mx-auto">
+                <div>
+                    <label for="signin-email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                    <input type="email" id="signin-email" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+                <div>
+                    <label for="signin-password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                    <input type="password" id="signin-password" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+                <div>
+                    <button type="submit" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition duration-300 shadow-md w-full">Sign In</button>
+                </div>
+                <p class="text-center text-gray-600">Don't have an account? <a href="#" class="text-emerald-600 hover:underline nav-link" data-target="sign-up">Sign Up</a></p>
+            </form>
+            <p class="text-red-600 font-semibold text-center mt-4">
+                **Note:** User authentication functionality (signing in) requires a backend system. This is a conceptual placeholder.
+            </p>
+        </section>
+
+        <!-- Sign Up Section -->
+        <section id="sign-up" class="page-section p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-3xl font-semibold text-emerald-700 mb-6">Sign Up</h2>
+            <form class="grid grid-cols-1 gap-6 max-w-md mx-auto">
+                <div>
+                    <label for="signup-name" class="block text-gray-700 text-sm font-bold mb-2">Full Name:</label>
+                    <input type="text" id="signup-name" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+                <div>
+                    <label for="signup-email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                    <input type="email" id="signup-email" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+                <div>
+                    <label for="signup-password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                    <input type="password" id="signup-password" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+                <div>
+                    <label for="signup-confirm-password" class="block text-gray-700 text-sm font-bold mb-2">Confirm Password:</label>
+                    <input type="password" id="signup-confirm-password" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm" required>
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">I am signing up as:</label>
+                    <div class="flex items-center space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="user-type" value="job-seeker" class="form-radio text-emerald-600" checked>
+                            <span class="ml-2 text-gray-700">Job Seeker</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="user-type" value="employer" class="form-radio text-emerald-600">
+                            <span class="ml-2 text-gray-700">Employer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Conceptual fields that would appear based on user type selection -->
+                <!--
+                <div id="employer-fields" class="hidden md:col-span-2">
+                    <label for="company-name" class="block text-gray-700 text-sm font-bold mb-2">Company Name:</label>
+                    <input type="text" id="company-name" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm">
+                </div>
+                <div id="job-seeker-fields" class="hidden md:col-span-2">
+                    <label for="skills-interests" class="block text-gray-700 text-sm font-bold mb-2">Skills/Interests (comma-separated):</label>
+                    <textarea id="skills-interests" rows="3" class="p-3 border border-gray-300 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 shadow-sm"></textarea>
+                </div>
+                -->
+
+                <div>
+                    <button type="submit" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition duration-300 shadow-md w-full">Sign Up</button>
+                </div>
+                <p class="text-center text-gray-600">Already have an account? <a href="#" class="text-emerald-600 hover:underline nav-link" data-target="sign-in">Sign In</a></p>
+            </form>
+            <p class="text-red-600 font-semibold text-center mt-4">
+                **Note:** User registration functionality (signing up and creating profiles) requires a backend system. This is a conceptual placeholder.
+                Dynamic fields based on "User Type" selection would also require JavaScript logic and backend integration.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white p-4 text-center mt-auto shadow-inner">
+        <div class="container mx-auto">
+            <p class="flex items-center justify-center">
+                &copy; 2025 Zim Connect. All rights reserved.
+                <img src="https://af6815798a.imgdist.com/pub/bfra/knkjywkm/o5a/c9k/02e/zimbabwe-waving-flag-realistic-transparent-background-free-png.webp" alt="Zimbabwe Flag Logo" class="inline-block h-6 w-6 ml-2 rounded-full object-cover">
+            </p>
+            <div class="flex justify-center space-x-4 mt-2 mb-4">
+                <a href="#" class="hover:text-amber-300 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-amber-300 transition duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-amber-300 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <!-- Contact Us Button -->
+            <button id="show-contact-form-btn" class="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition duration-300 shadow-md mb-4">
+                Contact Us
+            </button>
+
+            <!-- Contact Us Form (hidden by default) -->
+            <form id="contact-us-form" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-800 p-6 rounded-lg shadow-inner max-w-xl mx-auto">
+                <h3 class="md:col-span-2 text-2xl font-semibold text-white mb-4">Get in Touch</h3>
+                <div>
+                    <label for="contact-name" class="block text-gray-300 text-sm font-bold mb-2">Your Name:</label>
+                    <input type="text" id="contact-name" class="p-3 border border-gray-600 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 bg-gray-700 text-white shadow-sm" required>
+                </div>
+                <div>
+                    <label for="contact-email" class="block text-gray-300 text-sm font-bold mb-2">Your Email:</label>
+                    <input type="email" id="contact-email" class="p-3 border border-gray-600 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 bg-gray-700 text-white shadow-sm" required>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="contact-subject" class="block text-gray-300 text-sm font-bold mb-2">Subject:</label>
+                    <input type="text" id="contact-subject" class="p-3 border border-gray-600 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 bg-gray-700 text-white shadow-sm" required>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="contact-message" class="block text-gray-300 text-sm font-bold mb-2">Message:</label>
+                    <textarea id="contact-message" rows="5" class="p-3 border border-gray-600 rounded-lg w-full focus:ring-emerald-500 focus:border-emerald-500 bg-gray-700 text-white shadow-sm" required></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition duration-300 shadow-md w-full">Send Message</button>
+                </div>
+                <p id="contact-message-status" class="md:col-span-2 text-center text-emerald-400 mt-2 font-semibold hidden"></p>
+            </form>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
